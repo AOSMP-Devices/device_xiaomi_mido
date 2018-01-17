@@ -16,10 +16,16 @@
 
 $(call inherit-product, device/xiaomi/mido/full_mido.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Bootanimation stuff.
+TARGET_ARCH := arm64
+TARGET_DENSITY := xxhdpi
+TARGET_BOOT_ANIMATION_RES := 1080
+PRODUCT_COPY_FILES += vendor/aosmp/prebuilt/common/media/AOSMP-1080.zip:system/media/bootanimation.zip
 
-PRODUCT_NAME := lineage_mido
+# Inherit some common MoonOS stuff.
+$(call inherit-product, vendor/aosmp/config/common_full_phone.mk)
+
+PRODUCT_NAME := aosmp_mido
 BOARD_VENDOR := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
